@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "ava",
-    "demo": "parcel src/demo/index.html"
+    "demo": "parcel src/demo/index.html",
+    "demo:build": "parcel build src/demo/index.html"
   },
   "devDependencies": {
     "ava": "^3.8.2",
