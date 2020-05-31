@@ -37,22 +37,70 @@ const TrackFrames = (state) => {
   ];
 };
 
-const numberOfColumns = 8;
-const numberOfRows = 5;
+const Initialize = ({ numberOfColumns, numberOfRows }) => (state) => [
+  {
+    ...state,
+    squares: Array.from({ length: numberOfColumns * numberOfRows}, (_, index) => ({
+      color: 'hsla(' + [
+        Math.random() * 359,
+        '60%',
+        '40%',
+        0.3,
+      ]
+        .join(', ') + ')',
+      angle: Math.random() * 360,
+      speed: (Math.random() * 6) - 3,
+      x: ((index % numberOfColumns) * (640 / numberOfColumns)) + (640 / numberOfColumns / 2),
+      y: (Math.floor(index / numberOfColumns) * (480 / numberOfRows)) + (480 / numberOfRows / 2),
+    })),
+  },
+  effects.none(),
+];
+
+const ControlListeners = () => {
+  const rowsElement = document.querySelector('input#numberOfRows');
+  const colsElement = document.querySelector('input#numberOfCols');
+
+  return (dispatch) => {
+    let numberOfRows = rowsElement.value;
+    let numberOfColumns = colsElement.value;
+
+    const trigger = () => {
+      dispatch(Initialize({
+        numberOfRows,
+        numberOfColumns,
+      }));
+    };
+
+    const onRowsChange = (event) => {
+      numberOfRows = event.target.value;
+      trigger();
+    };
+
+    const onColsChange = (event) => {
+      numberOfColumns = event.target.value;
+      trigger();
+    };
+    rowsElement.addEventListener('input', onRowsChange);
+    colsElement.addEventListener('input', onColsChange);
+
+    trigger();
+
+    return () => {
+      rowsElement.removeEventListener('input', onRowsChange);
+      colsElement.removeEventListener('input', onColsChange);
+    };
+  };
+};
+
 app({
-  init: [
-    {
-      lastFrameAt: performance.now(),
-      frameDeltas: [],
-      squares: Array.from({ length: numberOfColumns * numberOfRows}, (_, index) => ({
-        angle: Math.random() * 360,
-        speed: 1 + (Math.random() * 6),
-        x: ((index % numberOfColumns) * (640 / numberOfColumns)) + (640 / numberOfColumns / 2),
-        y: (Math.floor(index / numberOfColumns) * (480 / numberOfRows)) + (480 / numberOfRows / 2),
-      })),
-    },
-    effects.none(),
-  ],
+  init: Initialize({
+    numberOfColumns: document.querySelector('input#numberOfCols').value,
+    numberOfRows: document.querySelector('input#numberOfRows').value,
+  })({
+    lastFrameAt: performance.now(),
+    frameDeltas: [],
+  }),
 
   render: (state, canvas) => [
     c('save'),
@@ -74,12 +122,12 @@ app({
 
       c('rotate', toRadians(square.angle)),
 
-      c('fillStyle', 'white'),
+      c('fillStyle', square.color),
       c('fillRect', {
-        x: -20,
-        y: -20,
-        width: 40,
-        height: 40,
+        x: -35,
+        y: -35,
+        width: 70,
+        height: 70,
       }),
 
       c('restore'),
@@ -91,6 +139,7 @@ app({
   subscribe: (state, builtIns) => [
     [builtIns.onFrame, Rotate],
     [builtIns.onFrame, TrackFrames],
+    [ControlListeners],
   ],
 
   canvas: document.querySelector('canvas#app'),

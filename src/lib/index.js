@@ -26,11 +26,18 @@ const app = (props) => {
     rafHandle = handle;
   };
 
+  const getStateEffectFromAction = (action, state) => {
+    if (Array.isArray(action)) {
+      return action[0](state, action[1]);
+    }
+    return action(state);
+  };
+
   const update = (action, state) => {
     if (!action) {
       return [state, effects.none()];
     }
-    const [nextState, effect] = action(state);
+    const [nextState, effect] = getStateEffectFromAction(action, state);
     return [
       nextState,
       effects.batch([

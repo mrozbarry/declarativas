@@ -3,12 +3,64 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body * {
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 100%;
+        width: 100vw;
+        grid-gap: 4px;
+      }
+
+      @media screen and (min-width: 600px) {
+        .container {
+          grid-template-columns: auto 300px;
+        }
+      }
+
+      canvas#app {
+        width: 100%;
+        height: 100%;
+      }
+
+      .control-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
   </head>
   <body>
-    <canvas id="app" width="640" height="480">
-      Canvas not supported
-    </canvas>
-    <div id="stats"></div>
+    <h1>Declarativas Demos</h1>
+    <h2>Rotating Squares</h2>
+    <div class="container">
+      <canvas id="app" width="640" height="480">
+        Canvas not supported
+      </canvas>
+      <div class="sidebar">
+        <h3>Controls</h3>
+        <form>
+          <div>
+            <label for="numberOfRows" style="display: block;">Number of rows</label>
+            <input id="numberOfRows" type="number" min="2" max="20" value="5" />
+        </div>
+          <div>
+            <label for="numberOfCols" style="display: block;">Number of columns</label>
+            <input id="numberOfCols" type="number" min="2" max="20" value="8" />
+        </div>
+        </form>
+
+        <h3>Statistics</h3>
+        <div id="stats"></div>
+      </div>
+    </div>
 
     <script src="./index.js"></script>
   </body>
