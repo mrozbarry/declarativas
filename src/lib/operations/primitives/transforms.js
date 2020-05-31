@@ -10,6 +10,6 @@ export const translate = operation.make(
 
 export const rotate = operation.make(
   'rotate',
-  (context, angle) => context.rotate(angle),
+  (context, props) => context.rotate(props.value),
 );
 

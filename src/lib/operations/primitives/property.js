@@ -3,7 +3,7 @@ import * as operation from '../operation.js';
 const setAttributeOperation = (attribute) => operation.make(
   attribute,
   (context, props) => {
-    context[attribute] = props;
+    context[attribute] = props.value;
   },
 );
 
