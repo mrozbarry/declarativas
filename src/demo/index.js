@@ -24,8 +24,8 @@ const TrackFrames = (state) => {
   const currentTime = performance.now();
   const delta = currentTime - state.lastFrameAt;
 
-  stats.innerHTML = `
-<div>FPS: ${(state.frameDeltas.length / (state.frameDeltas.reduce((sum, delta) => sum + delta, 0) / 1000)).toFixed(2)}</div>
+  stats.innerText = `
+FPS: ${(state.frameDeltas.length / (state.frameDeltas.reduce((sum, delta) => sum + delta, 0) / 1000)).toFixed(2)}
 `;
 
   return [
@@ -33,7 +33,8 @@ const TrackFrames = (state) => {
       ...state,
       lastFrameAt: currentTime,
       frameDeltas: [delta, ...state.frameDeltas.slice(0, 9)],
-    }
+    },
+    effects.none(),
   ];
 };
 
@@ -62,36 +63,33 @@ const ControlListeners = () => {
   const colsElement = document.querySelector('input#numberOfCols');
 
   return (dispatch) => {
-    let numberOfRows = rowsElement.value;
-    let numberOfColumns = colsElement.value;
-
     const trigger = () => {
       dispatch(Initialize({
-        numberOfRows,
-        numberOfColumns,
+        numberOfRows: rowsElement.value || 2,
+        numberOfColumns: colsElement.value || 2,
       }));
     };
 
-    const onRowsChange = (event) => {
-      numberOfRows = event.target.value;
+    const onInputChange = () => {
       trigger();
     };
-
-    const onColsChange = (event) => {
-      numberOfColumns = event.target.value;
-      trigger();
-    };
-    rowsElement.addEventListener('input', onRowsChange);
-    colsElement.addEventListener('input', onColsChange);
+    rowsElement.addEventListener('input', onInputChange);
+    colsElement.addEventListener('input', onInputChange);
 
     trigger();
 
     return () => {
-      rowsElement.removeEventListener('input', onRowsChange);
-      colsElement.removeEventListener('input', onColsChange);
+      rowsElement.removeEventListener('input', onInputChange);
+      colsElement.removeEventListener('input', onInputChange);
     };
   };
 };
+
+const Group = (_props, children) => [
+  c('save'),
+  children,
+  c('restore'),
+];
 
 app({
   init: Initialize({
@@ -103,37 +101,32 @@ app({
   }),
 
   render: (state, canvas) => [
-    c('save'),
-    c('fillStyle', '#d0d0d0'),
-    c('fillRect', {
-      x: 0,
-      y: 0,
-      width: canvas.width,
-      height: canvas.height,
-    }),
-
-    state.squares.map((square) => [
-      c('save'),
-
-      c('translate', {
-        x: square.x,
-        y: square.y,
-      }),
-
-      c('rotate', toRadians(square.angle)),
-
-      c('fillStyle', square.color),
+    c(Group, null, [
+      c('fillStyle', { value: '#d0d0d0' }),
       c('fillRect', {
-        x: -35,
-        y: -35,
-        width: 70,
-        height: 70,
+        x: 0,
+        y: 0,
+        width: canvas.width,
+        height: canvas.height,
       }),
 
-      c('restore'),
-    ]),
+      state.squares.map((square) => c(Group, null, [
+        c('translate', {
+          x: square.x,
+          y: square.y,
+        }),
 
-    c('restore'),
+        c('rotate', { value: toRadians(square.angle) }),
+
+        c('fillStyle', { value: square.color }),
+        c('fillRect', {
+          x: -35,
+          y: -35,
+          width: 70,
+          height: 70,
+        }),
+      ])),
+    ])
   ],
 
   subscribe: (state, builtIns) => [
