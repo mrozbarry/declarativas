@@ -10,10 +10,10 @@ const renderToCanvas = (props) => effects.thunk(() => {
         for (let fcb of props.frameCallbacks) {
           fcb();
         }
-        return effects.none();
       },
     ),
   );
+  return effects.none();
 });
 
 const app = (props) => {
@@ -37,18 +37,18 @@ const app = (props) => {
     if (!action) {
       return [state, effects.none()];
     }
-    const [nextState, effect] = getStateEffectFromAction(action, state);
+    const result = getStateEffectFromAction(action, state);
     return [
-      nextState,
+      result[0],
       effects.batch([
         renderToCanvas({
-          operations: props.render(nextState, props.canvas),
+          operations: props.render(result[0], props.canvas),
           canvas: props.canvas,
           context,
           setRafHandle,
           frameCallbacks,
         }),
-        effect,
+        result[1],
       ]),
     ];
   };
@@ -57,7 +57,7 @@ const app = (props) => {
     const callback = () => dispatch(action);
     frameCallbacks.push(callback);
 
-    dispatch((state) => state);
+    dispatch((state) => [state, effects.none()]);
 
     return () => {
       frameCallbacks = frameCallbacks.filter(fcb => fcb !== callback);
