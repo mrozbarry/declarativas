@@ -2,7 +2,7 @@
 
 Declarative canvas for the browser.
 
-## 30s Demo
+## Quick Demo
 
 ```html
 <canvas width="640" height="480">
@@ -10,19 +10,11 @@ Declarative canvas for the browser.
 </canvas>
 
 <script type="module">
-import { app, c, effects } from 'declarativas';
+import { render, c } from 'declarativas';
 
-const RotateRect = (state) => {
-  return [
-    { ...state, angle: (state.angle + 1) % 360 },
-    effects.none(),
-  ]
-};
-
-app({
-  init: { angle: 0 },
-
-  render: (state, canvas) => [
+render(
+  canvas.getContext('2d'),
+  [
     c('save'),
     c('clearRect', {
       x: 0,
@@ -40,12 +32,11 @@ app({
     })
     c('restore'),
   ]),
-
-  subscribe: (state, builtIns) => [
-    builtIns.onFrame(RotateRect),
-  ],
-
-  canvas: document.querySelector('canvas'),
-});
+);
 </script>
 ```
+
+## More holistic demo
+
+[Demo](./src/demo) source is probably the more interactive demo currently.
+

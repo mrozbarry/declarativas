@@ -15,9 +15,6 @@ export const render = (context, nodes) => {
     if (Array.isArray(node)) {
       render(context, node);
       continue;
-    } else if (typeof node.type === 'function') {
-      render(context, node.type(node.props, node.children));
-      continue;
     }
 
     try {
