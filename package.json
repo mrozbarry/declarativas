@@ -16,11 +16,14 @@
     "sinon": "^9.0.2"
   },
   "dependencies": {
-    "ferp": "^1.2.0"
   },
   "ava": {
     "require": [
       "esm"
     ]
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome versions",
+    "last 1 Firefox versions"
+  ]
 }

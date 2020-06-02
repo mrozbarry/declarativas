@@ -2994,11 +2994,6 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-ferp@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ferp/-/ferp-1.2.0.tgz#663babe4efe03053d70076e07925022ec9a4aa94"
-  integrity sha512-PnyfzKxorL+uo96si8XG8ULTKfLqimRcJYLeF6ikLX3HpVOvAcXkYs3wJ9uoaJJ0F7oNcsCI3hpETLxfXOjV5A==
-
 figures@^3.0.0, figures@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-3.2.0.tgz#625c18bd293c604dc4a8ddb2febf0c88341746af"
