@@ -1,26 +1,25 @@
 import { render } from '../lib/index';
 
-export function *make({
+function *makeIterator({
   context,
-  initialState,
   view,
 }) {
-  let state = { ...initialState };
-  const runView = () => render(
-    context,
-    view(state, context),
-  );
-
-  const pipe = (fns) => (value) => (
-    fns.reduce((state, fn) => fn(state), value)
-  );
-
-  runView();
+  let state = {};
+  let update = (nextState) => nextState;
 
   while (true) {
-    const fns = yield state;
-    state = pipe(fns)(state);
+    update = yield state;
+    state = update({ ...state });
     if (!state) return;
-    runView();
+    render(
+      context,
+      view(state, context),
+    );
   }
+}
+
+export function make(props) {
+  const app = makeIterator(props);
+  app.next(); // iterators that both accept and publish data need this initial .next call
+  return app;
 }

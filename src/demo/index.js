@@ -15,7 +15,10 @@ const controls = {
 
 const random = rnd.make();
 
-/* Example Component */
+const pipe = (fns) => (value) => (
+  fns.reduce((state, fn) => fn(state), value)
+);
+
 const RevertableState = (_props, children) => [
   c('save'),
   children,
@@ -50,17 +53,6 @@ const Square = (props) => c(RevertableState, null, [
 ]);
 
 const game = app.make({
-  initialState: actions.Initialize({
-    numberOfColumns: controls.numberOfCols.value,
-    numberOfRows: controls.numberOfRows.value,
-    rnd: random,
-  })({
-    play: true,
-    squares: [],
-    lastFrameAt: performance.now(),
-    frameDeltas: [],
-  }),
-
   view: (state, context) => c(RevertableState, null, [
     c(FilledRect, {
       fill: '#d0d0d0',
@@ -78,30 +70,43 @@ const game = app.make({
 
 const loop = () => {
   // Pure state functions
-  const state = game.next([
+  const state = game.next(pipe([
     actions.Rotate,
     actions.TrackFrames,
-  ]).value;
+  ])).value;
 
   // Side effects here
   controls.fps.innerText = `
 FPS: ${(state.frameDeltas.length / (state.frameDeltas.reduce((sum, delta) => sum + delta, 0) / 1000)).toFixed(2)}
 `;
 
-  // And schedule next frame
   requestAnimationFrame(loop);
 };
 
 const onControlInput = () => {
-  game.next([
+  game.next(
     actions.Initialize({
       numberOfColumns: controls.numberOfCols.value || 2,
       numberOfRows: controls.numberOfRows.value || 2,
       rnd: random,
-    })
-  ]);
+    }),
+  );
 };
 controls.numberOfCols.addEventListener('input', onControlInput);
 controls.numberOfRows.addEventListener('input', onControlInput);
+
+game.next(pipe([
+  () => ({
+    play: true,
+    squares: [],
+    lastFrameAt: performance.now(),
+    frameDeltas: [],
+  }),
+  actions.Initialize({
+    numberOfColumns: controls.numberOfCols.value,
+    numberOfRows: controls.numberOfRows.value,
+    rnd: random,
+  }),
+]));
 
 loop();
