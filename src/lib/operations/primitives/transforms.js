@@ -13,3 +13,10 @@ export const rotate = operation.make(
   (context, props) => context.rotate(props.value),
 );
 
+export const scale = operation.make(
+  'scale',
+  (context, props) => context.rotate(
+    props.x,
+    props.y,
+  ),
+);
