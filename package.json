@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "ava",
+    "test:coverage": "nyc ava",
     "demo": "parcel src/demo/index.html",
     "demo:build": "parcel build src/demo/index.html"
   },
@@ -12,12 +13,13 @@
     "ava": "^3.8.2",
     "eslint": "^7.1.0",
     "esm": "^3.2.25",
+    "nyc": "^15.1.0",
     "parcel-bundler": "^1.12.4",
     "sinon": "^9.0.2"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "ava": {
+    "verbose": true,
     "require": [
       "esm"
     ]
