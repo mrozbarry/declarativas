@@ -2,7 +2,6 @@ import { primitives } from './operations/index';
 
 export const render = (context, nodes) => {
   if (!nodes || nodes.length === 0) {
-    console.log('no nodes');
     return;
   }
 
@@ -24,8 +23,11 @@ export const render = (context, nodes) => {
         node.props,
       );
     } catch (exception) {
-      console.warn('Unable to render', node.value);
-      throw exception;
+      const error = new TypeError(
+        `Unable to render ${node.type}`
+      );
+      error.source = exception;
+      throw error;
     }
   }
 };

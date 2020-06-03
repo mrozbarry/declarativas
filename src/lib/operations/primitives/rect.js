@@ -13,5 +13,5 @@ const rectOperation = (name) => {
 };
 
 export const clearRect = rectOperation('clearRect');
-
 export const fillRect = rectOperation('fillRect');
+export const strokeRect = rectOperation('strokeRect');
