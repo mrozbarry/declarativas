@@ -1,5 +1,5 @@
 export const make = (type, exec) => ({
-  build: (props, children = []) => ({
+  build: (props = {}, children = []) => ({
     type,
     props,
     children,

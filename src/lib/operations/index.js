@@ -3,6 +3,9 @@ import * as state from './primitives/state';
 import * as property from './primitives/property';
 import * as rect from './primitives/rect';
 import * as transforms from './primitives/transforms';
+import * as blit from './primitives/blit';
+import * as text from './primitives/text';
+import * as line from './primitives/line';
 
 export const primitives = {
   ...path,
@@ -10,4 +13,7 @@ export const primitives = {
   ...property,
   ...rect,
   ...transforms,
+  ...blit,
+  ...text,
+  ...line,
 };
