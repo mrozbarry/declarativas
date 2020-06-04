@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "ava",
-    "test:coverage": "nyc ava",
+    "test:coverage": "nyc ava -v",
     "demo": "parcel src/demo/index.html",
     "demo:build": "parcel build src/demo/index.html"
   },
@@ -19,7 +19,6 @@
   },
   "dependencies": {},
   "ava": {
-    "verbose": true,
     "require": [
       "esm"
     ]
