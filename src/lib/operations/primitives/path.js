@@ -66,7 +66,7 @@ export const bezierCurveTo = operation.make(
 
 export const quadraticCurveTo = operation.make(
   'quadraticCurveTo',
-  (context, props) => context.bezierCurveTo(
+  (context, props) => context.quadraticCurveTo(
     props.controlPoint.x,
     props.controlPoint.y,
     props.x,
