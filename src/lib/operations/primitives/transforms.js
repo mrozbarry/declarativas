@@ -15,7 +15,7 @@ export const rotate = operation.make(
 
 export const scale = operation.make(
   'scale',
-  (context, props) => context.rotate(
+  (context, props) => context.scale(
     props.x,
     props.y,
   ),
