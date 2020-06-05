@@ -39,4 +39,3 @@ render(
 ## More holistic demo
 
 [Demo](./src/demo) source is probably the more interactive demo currently.
-
