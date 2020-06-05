@@ -1,8 +1,13 @@
 {
   "name": "declarativas",
-  "version": "0.0.1-beta.4",
+  "version": "0.0.1-beta.5",
   "module": "src/lib/index.js",
   "main": "declarativas.js",
+  "homepage": "https://github.com/mrozbarry/declarativas",
+  "repository": {
+    "url": "https://github.com/mrozbarry/declarativas",
+    "type": "git"
+  },
   "license": "MIT",
   "scripts": {
     "test": "ava",
