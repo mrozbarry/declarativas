@@ -1,6 +1,6 @@
 {
   "name": "declarativas",
-  "version": "0.0.1-beta.2",
+  "version": "0.0.1-beta.3",
   "module": "src/lib/index.js",
   "main": "declarativas.js",
   "license": "MIT",
