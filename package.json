@@ -1,6 +1,6 @@
 {
   "name": "declarativas",
-  "version": "0.0.1-beta.5",
+  "version": "0.0.1-beta.6",
   "module": "declarativas.esm.js",
   "main": "declarativas.umd.js",
   "homepage": "https://github.com/mrozbarry/declarativas",
