@@ -4,6 +4,7 @@
   "module": "declarativas.esm.js",
   "main": "declarativas.umd.js",
   "homepage": "https://github.com/mrozbarry/declarativas",
+  "license": "MIT",
   "repository": {
     "url": "https://github.com/mrozbarry/declarativas",
     "type": "git"

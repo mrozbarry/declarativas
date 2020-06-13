@@ -2,6 +2,8 @@
 
 Declarative canvas for the browser.
 
+[<img src="https://img.shields.io/npm/v/declarativas?style=flat-square" alt="Npm" />](https://www.npmjs.com/package/declarativas)
+
 ## Quick Demo
 
 ```html
@@ -39,3 +41,7 @@ render(
 ## More holistic demo
 
 [Demo](./src/demo) source is probably the more interactive demo currently.
+
+## Other Resources
+
+ - [Declarativas Example Collection on CodePen.io](https://codepen.io/collection/nxpMVd)
