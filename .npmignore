@@ -4,3 +4,6 @@ dist
 .nyc_output
 coverage
 src/**/*.test.js
+src/legacy
+src/demo
+support
