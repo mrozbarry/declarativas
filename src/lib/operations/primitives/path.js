@@ -1,5 +1,7 @@
 import * as operation from '../operation';
 
+const TWO_PI = Math.PI * 2;
+
 export const beginPath = operation.make(
   'beginPath',
   (context) => context.beginPath(),
@@ -21,8 +23,8 @@ export const arc = operation.make(
     props.x,
     props.y,
     props.radius,
-    props.startAngle,
-    props.endAngle,
+    props.startAngle || 0,
+    props.endAngle || TWO_PI,
     props.anticlockwise || false,
   ),
 );
@@ -43,11 +45,11 @@ export const ellipse = operation.make(
   (context, props) => context.ellipse(
     props.x,
     props.y,
-    props.radiusX,
-    props.radiusY,
-    props.rotation,
-    props.startAngle,
-    props.endAngle,
+    props.radius.x,
+    props.radius.y,
+    props.rotation || 0,
+    props.startAngle || 0,
+    props.endAngle || TWO_PI,
     props.anticlockwise || false,
   ),
 );

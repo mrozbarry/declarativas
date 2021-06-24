@@ -95,8 +95,7 @@ test('ellipse exec calls ellipse context', (t) => {
   ellipse.exec(context, {
     x: 100,
     y: 200,
-    radiusX: 500,
-    radiusY: 501,
+    radius: { x: 500, y: 501 },
     rotation: 2,
     startAngle: 0,
     endAngle: 1,
