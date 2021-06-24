@@ -6,7 +6,7 @@ export const properties = (props, children) => {
     .keys(props)
     .map((key) => c(key, { value: props[key] }));
 
-  if (!children) return propComponents;
+  if (!children || children.length === 0) return propComponents;
 
-  return revertableState(propComponents);
+  return revertableState({}, propComponents);
 };
