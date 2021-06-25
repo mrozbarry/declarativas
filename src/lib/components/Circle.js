@@ -1,6 +1,6 @@
 import { c } from '../c';
 
-export const circle = (props) => [
+export const Circle = (props) => [
   props.fill && [
     c('fillStyle', { value: props.fill }),
     c('beginPath'),
