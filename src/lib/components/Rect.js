@@ -1,6 +1,6 @@
 import { c } from '../c';
 
-export const rect = (props) => [
+export const Rect = (props) => [
   props.fill && [
     c('fillStyle', { value: props.fill }),
     c('fillRect', props),

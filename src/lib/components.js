@@ -1,7 +1,7 @@
-export { circle } from './components/circle';
-export { ellipse } from './components/ellipse';
-export { rect } from './components/rect';
-export { revertableState } from './components/revertableState';
-export { shadow } from './components/shadow';
-export { properties } from './components/properties';
+export { Circle } from './components/Circle';
+export { Ellipse } from './components/Ellipse';
+export { Rect } from './components/Rect';
+export { RevertableState } from './components/RevertableState';
+export { Shadow } from './components/Shadow';
+export { Properties } from './components/Properties';
 

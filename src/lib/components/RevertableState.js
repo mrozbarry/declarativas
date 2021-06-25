@@ -1,6 +1,6 @@
 import { c } from '../c';
 
-export const revertableState = (_, children) => [
+export const RevertableState = (_, children) => [
   c('save'),
   children,
   c('restore'),
