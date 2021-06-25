@@ -1,15 +1,14 @@
 {
   "name": "declarativas",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "module": "declarativas.esm.js",
   "main": "declarativas.umd.js",
-  "homepage": "https://github.com/mrozbarry/declarativas",
+  "homepage": "https://declarativas.mrbarry.com",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/mrozbarry/declarativas",
     "type": "git"
   },
-  "license": "MIT",
   "scripts": {
     "test": "ava",
     "test:coverage": "nyc ava -v",

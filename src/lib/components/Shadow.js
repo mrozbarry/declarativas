@@ -1,5 +1,5 @@
 import { c } from '../c';
-import { RevertableState } from './revertableState';
+import { RevertableState } from './RevertableState';
 
 export const Shadow = (props, children) => RevertableState({}, [
   props.blur && c('shadowBlur', { value: props.blur }),
