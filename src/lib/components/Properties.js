@@ -1,5 +1,5 @@
 import { c } from '../c';
-import { RevertableState } from './revertableState';
+import { RevertableState } from './RevertableState';
 
 export const Properties = (props, children) => {
   const propComponents = Object
