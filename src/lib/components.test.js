@@ -1,11 +1,11 @@
 import test from 'ava';
 import { c } from './c';
-import * as components from './components';
+import { Circle, Ellipse, Properties, Rect } from './components';
 
 test('renders circle', (t) => {
   t.snapshot({
     allOptions: c(
-      components.circle,
+      Circle,
       {
         fill: 'fill',
         stroke: 'stroke',
@@ -16,7 +16,7 @@ test('renders circle', (t) => {
       },
     ),
     fullCircle: c(
-      components.circle,
+      Circle,
       {
         fill: 'fill',
         stroke: 'stroke',
@@ -31,7 +31,7 @@ test('renders circle', (t) => {
 test('renders ellipse', (t) => {
   t.snapshot({
     allOptions: c(
-      components.ellipse,
+      Ellipse,
       {
         fill: 'fill',
         stroke: 'stroke',
@@ -43,7 +43,7 @@ test('renders ellipse', (t) => {
       },
     ),
     fullCircle: c(
-      components.ellipse,
+      Ellipse,
       {
         fill: 'fill',
         stroke: 'stroke',
@@ -59,7 +59,7 @@ test('renders ellipse', (t) => {
 test('renders properties', (t) => {
   t.snapshot({
     noChildren: c(
-      components.properties,
+      Properties,
       {
         imageSmoothingEnabled: false,
         globalAlpha: 0.7,
@@ -67,7 +67,7 @@ test('renders properties', (t) => {
       },
     ),
     withChildren: c(
-      components.properties,
+      Properties,
       { fillStyle: 'fill' },
       [
         c('fillRect', { x: 1, y: 2, width: 3, height: 4 }),
@@ -79,7 +79,7 @@ test('renders properties', (t) => {
 test('renders rect', (t) => {
   t.snapshot({
     allOptions: c(
-      components.rect,
+      Rect,
       {
         fill: 'fill',
         stroke: 'stroke',

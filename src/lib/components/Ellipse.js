@@ -1,6 +1,6 @@
 import { c } from '../c';
 
-export const ellipse = (props) => [
+export const Ellipse = (props) => [
   props.fill && [
     c('fillStyle', { value: props.fill }),
     c('beginPath'),
