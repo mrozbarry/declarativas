@@ -1,4 +1,4 @@
-import { c } from '../lib/index';
+import { c } from '../../declarativas.esm.js';
 import * as app from './app';
 import * as actions from './actions';
 import * as rnd from './rnd';
