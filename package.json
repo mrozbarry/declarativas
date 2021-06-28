@@ -12,8 +12,6 @@
   "scripts": {
     "test": "ava",
     "test:coverage": "nyc ava -v",
-    "demo": "parcel src/demo/index.html",
-    "demo:build": "parcel build src/demo/index.html",
     "build": "rollup -c ./rollup.config.js",
     "prepublishOnly": "yarn build"
   },
@@ -23,7 +21,6 @@
     "eslint": "^7.29.0",
     "esm": "^3.2.25",
     "nyc": "^15.1.0",
-    "parcel": "^2.0.0-beta",
     "rollup": "^2.52.2",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-eslint": "^7.0.0",

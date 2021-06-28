@@ -1,7 +1,4 @@
 node_modules
-.cache
-dist
 .nyc_output
 coverage
 declarativas.*.js
-.parcel-cache
