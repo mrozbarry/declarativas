@@ -1,4 +1,4 @@
-import { render } from '../../declarativas.esm.js';
+import { render } from '../../src/lib/index.js';
 
 function *makeIterator({
   context,
