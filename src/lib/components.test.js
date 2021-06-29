@@ -1,6 +1,8 @@
 import test from 'ava';
 import { c } from './c';
 import { Circle, Ellipse, Properties, Rect } from './components';
+import {RevertableState} from './components/RevertableState';
+import {Shadow} from './components/Shadow';
 
 test('renders circle', (t) => {
   t.snapshot({
@@ -87,6 +89,44 @@ test('renders rect', (t) => {
         y: 20,
         width: 30,
         height: 40,
+      },
+    ),
+  });
+});
+
+test('renders revertable state', (t) => {
+  t.snapshot({
+    child: c(
+      RevertableState,
+      {},
+      c('rect', { x: 0, y: 0, width: 1, height: 1 })
+    ),
+    children: c(
+      RevertableState,
+      {},
+      [
+        c('fillStyle', { value: 'blue' }),
+        c('fillRect', { x: 0, y: 0, width: 1, height: 1 })
+      ],
+    ),
+  });
+});
+
+test('renders shadow', (t) => {
+  t.snapshot({
+    allOptions: c(
+      Shadow,
+      {
+        blur: 5,
+        color: '#f0f',
+        offset: { x: 1, y: 1 },
+      },
+    ),
+    noOffset: c(
+      Shadow,
+      {
+        blur: 5,
+        color: '#f0f',
       },
     ),
   });
