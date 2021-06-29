@@ -2,6 +2,6 @@ import { c } from '../c';
 
 export const RevertableState = (_, children) => [
   c('save'),
-  children,
+  ...(Array.isArray(children) ? children : [children]),
   c('restore'),
 ];
