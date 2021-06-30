@@ -5,6 +5,10 @@ export const render = (context, nodes) => {
     return;
   }
 
+  if (!Array.isArray(nodes)) {
+    return render(context, [nodes]);
+  }
+
   let node;
   let op;
 
