@@ -11,9 +11,10 @@ function *makeIterator({
     update = yield state;
     state = update({ ...state });
     if (!state) return;
+    const tree = view(state, context);
     render(
       context,
-      view(state, context),
+      tree,
     );
   }
 }

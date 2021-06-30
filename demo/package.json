@@ -4,8 +4,8 @@
   "homepage": "https://declarativas.mrbarry.com",
   "license": "MIT",
   "scripts": {
-    "demo": "parcel src/index.html",
-    "demo:build": "parcel build src/index.html"
+    "start": "parcel serve src/index.html --log-level=verbose",
+    "build": "parcel build src/index.html"
   },
   "devDependencies": {
     "parcel": "^2.0.0-beta"

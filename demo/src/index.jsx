@@ -1,7 +1,15 @@
-import { c } from '../../src/lib/index.js';
+/*
+ * @jsxFactory c
+ * @jsx c
+ *
+ */
+
+import { c, components } from '../../src/lib/index.js';
 import * as app from './app';
 import * as actions from './actions';
 import * as rnd from './rnd';
+
+const { Rect, RevertableState } = components;
 
 const toRadians = (degrees) => (
   degrees * Math.PI / 180
@@ -11,6 +19,7 @@ const controls = {
   numberOfRows: document.querySelector('input#numberOfRows'),
   numberOfCols: document.querySelector('input#numberOfCols'),
   fps: document.querySelector('#stats'),
+  tree: document.querySelector('#tree'),
 };
 
 const random = rnd.make();
@@ -19,51 +28,28 @@ const pipe = (fns) => (value) => (
   fns.reduce((state, fn) => fn(state), value)
 );
 
-const RevertableState = (_props, children) => [
-  c('save'),
-  children,
-  c('restore'),
-];
-
-const FilledRect = (props) => [
-  c('fillStyle', { value: props.fill }),
-  c('fillRect', {
-    x: props.x,
-    y: props.y,
-    width: props.width,
-    height: props.height,
-  }),
-];
-
-const Square = (props) => c(RevertableState, null, [
-  c('translate', {
-    x: props.x,
-    y: props.y,
-  }),
-
-  c('rotate', { value: toRadians(props.angle) }),
-
-  c(FilledRect, {
-    fill: props.color,
-    x: -35,
-    y: -35,
-    width: 70,
-    height: 70,
-  }),
-]);
+const Square = (props) => <RevertableState>
+  <translate x={props.x} y={props.y} />
+  <rotate value={toRadians(props.angle)} />
+  <Rect
+    x={-35}
+    y={-35}
+    width={70}
+    height={70}
+  />
+</RevertableState>;
 
 const game = app.make({
-  view: (state, context) => c(RevertableState, null, [
-    c(FilledRect, {
-      fill: '#d0d0d0',
-      x: 0,
-      y: 0,
-      width: context.canvas.width,
-      height: context.canvas.height,
-    }),
-
-    state.squares.map((square) => c(Square, square)),
-  ]),
+  view: (state, context) => [
+      <Rect
+        fill="#d0d0d0"
+        x={0}
+        y={0}
+        width={context.canvas.width}
+        height={context.canvas.height}
+      />,
+      state.squares.map((square) => <Square {...square} />)
+  ],
 
   context: document.querySelector('#app').getContext('2d'),
 });
@@ -80,7 +66,7 @@ const loop = () => {
 FPS: ${(state.frameDeltas.length / (state.frameDeltas.reduce((sum, delta) => sum + delta, 0) / 1000)).toFixed(2)}
 `;
 
-  requestAnimationFrame(loop);
+  //requestAnimationFrame(loop);
 };
 
 const onControlInput = () => {
@@ -110,3 +96,5 @@ game.next(pipe([
 ]));
 
 loop();
+
+console.log(<fragment><fillStyle value="foo" /><strokeStyle value="bar" /></fragment>);
