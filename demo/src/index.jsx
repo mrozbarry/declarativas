@@ -1,7 +1,5 @@
 /*
- * @jsxFactory c
  * @jsx c
- *
  */
 
 import { c, components } from '../../src/lib/index.js';
@@ -36,19 +34,21 @@ const Square = (props) => <RevertableState>
     y={-35}
     width={70}
     height={70}
+    fill={props.color}
+    stroke="black"
   />
 </RevertableState>;
 
 const game = app.make({
   view: (state, context) => [
-      <Rect
-        fill="#d0d0d0"
-        x={0}
-        y={0}
-        width={context.canvas.width}
-        height={context.canvas.height}
-      />,
-      state.squares.map((square) => <Square {...square} />)
+    <Rect
+      fill="#d0d0d0"
+      x={0}
+      y={0}
+      width={context.canvas.width}
+      height={context.canvas.height}
+    />,
+    ...state.squares.map((square) => <Square {...square} />)
   ],
 
   context: document.querySelector('#app').getContext('2d'),
@@ -66,7 +66,7 @@ const loop = () => {
 FPS: ${(state.frameDeltas.length / (state.frameDeltas.reduce((sum, delta) => sum + delta, 0) / 1000)).toFixed(2)}
 `;
 
-  //requestAnimationFrame(loop);
+  requestAnimationFrame(loop);
 };
 
 const onControlInput = () => {
@@ -96,5 +96,3 @@ game.next(pipe([
 ]));
 
 loop();
-
-console.log(<fragment><fillStyle value="foo" /><strokeStyle value="bar" /></fragment>);

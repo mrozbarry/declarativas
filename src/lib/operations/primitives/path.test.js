@@ -64,6 +64,20 @@ test('arc exec calls arc context', (t) => {
   t.truthy(context.arc.calledWithExactly(100, 200, 500, 0, 1, false));
 });
 
+test('arc defaults endAngle to TWO_PI', (t) => {
+  const context = (new Canvas()).getContext('2d');
+
+  arc.exec(context, {
+    x: 100,
+    y: 200,
+    radius: 500,
+    startAngle: 0,
+  });
+
+  t.is(context.arc.callCount, 1);
+  t.truthy(context.arc.calledWithExactly(100, 200, 500, 0, Math.PI * 2, false));
+});
+
 test('arcTo exec calls arcTo context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
@@ -103,6 +117,20 @@ test('ellipse exec calls ellipse context', (t) => {
 
   t.is(context.ellipse.callCount, 1);
   t.truthy(context.ellipse.calledWithExactly(100, 200, 500, 501, 2, 0, 1, false));
+});
+
+test('ellipse defaults rotation to 0, and endAngle to TWO_PI', (t) => {
+  const context = (new Canvas()).getContext('2d');
+
+  ellipse.exec(context, {
+    x: 100,
+    y: 200,
+    radius: { x: 500, y: 501 },
+    startAngle: 0.5,
+  });
+
+  t.is(context.ellipse.callCount, 1);
+  t.truthy(context.ellipse.calledWithExactly(100, 200, 500, 501, 0, 0.5, Math.PI * 2, false));
 });
 
 test('bezierCurveTo exec calls bezierCurveTo context', (t) => {

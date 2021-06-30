@@ -1,6 +1,6 @@
 import { primitives } from './operations/index';
 
-export const c = (functionOrName, props, children) => {
+export const c = (functionOrName, props, ...children) => {
   if (typeof functionOrName === 'function') {
     return functionOrName(props, children);
   }

@@ -9,7 +9,9 @@ export const render = (context, nodes) => {
   let op;
 
   for (node of nodes) {
-    if (!node) continue;
+    if (!node) {
+      continue;
+    }
 
     if (Array.isArray(node)) {
       render(context, node);
@@ -30,4 +32,5 @@ export const render = (context, nodes) => {
       throw error;
     }
   }
+  console.groupEnd();
 };

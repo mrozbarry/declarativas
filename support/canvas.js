@@ -60,11 +60,7 @@ class Canvas {
     this.height = 480;
   }
 
-  getContext(type) {
-    if (type !== '2d') {
-      throw new Error('unsupported');
-    }
-
+  getContext(_type) {
     return this._context2d;
   }
 }
