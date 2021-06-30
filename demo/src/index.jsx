@@ -40,16 +40,16 @@ const Square = (props) => <RevertableState>
 </RevertableState>;
 
 const game = app.make({
-  view: (state, context) => [
+  view: (state, context) => <g>
     <Rect
       fill="#d0d0d0"
       x={0}
       y={0}
       width={context.canvas.width}
       height={context.canvas.height}
-    />,
-    ...state.squares.map((square) => <Square {...square} />)
-  ],
+    />
+    {state.squares.map((square) => <Square {...square} />)}
+  </g>,
 
   context: document.querySelector('#app').getContext('2d'),
 });
