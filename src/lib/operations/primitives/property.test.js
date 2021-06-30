@@ -3,7 +3,7 @@ import * as property from './property';
 
 const propertyMacro = (t, input, expected) => {
   const context = {};
-  property[input].exec(context, { value: expected });
+  property[input].exec({ context }, { value: expected });
   t.is(context[input], expected);
 };
 

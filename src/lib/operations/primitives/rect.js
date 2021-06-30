@@ -3,7 +3,7 @@ import * as operation from '../operation';
 const rectOperation = (name) => {
   return operation.make(
     name,
-    (context, props) => context[name](
+    ({ context }, props) => context[name](
       props.x,
       props.y,
       props.width,

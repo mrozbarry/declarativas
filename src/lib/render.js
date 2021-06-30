@@ -21,8 +21,9 @@ export const render = (context, nodes) => {
     try {
       op = primitives[node.type];
       op.exec(
-        context,
+        { context, render },
         node.props,
+        node.children,
       );
     } catch (exception) {
       const error = new TypeError(
@@ -32,5 +33,4 @@ export const render = (context, nodes) => {
       throw error;
     }
   }
-  console.groupEnd();
 };

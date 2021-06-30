@@ -9,7 +9,7 @@ test('primitive drawImage calls context drawImage with full image width and heig
     height: 20,
   };
 
-  drawImage.exec(context, {
+  drawImage.exec({ context }, {
     image,
     destination: {
       x: 100,
@@ -34,7 +34,7 @@ test('primitive drawImage calls context drawImage when not specifying a source',
     height: 20,
   };
 
-  drawImage.exec(context, {
+  drawImage.exec({ context }, {
     image,
     destination: {
       x: 100,
@@ -61,7 +61,7 @@ test('primitive drawImage calls context drawImage with source region', (t) => {
     height: 20,
   };
 
-  drawImage.exec(context, {
+  drawImage.exec({ context }, {
     image,
     destination: {
       x: 100,
@@ -98,7 +98,7 @@ test('primitive putImageData calls context putImageData at a destination', (t) =
     height: 20,
   };
 
-  putImageData.exec(context, {
+  putImageData.exec({ context }, {
     imageData,
     destination: {
       x: 99,
@@ -117,7 +117,7 @@ test('primitive putImageData calls context putImageData at a destination with a 
     height: 20,
   };
 
-  putImageData.exec(context, {
+  putImageData.exec({ context }, {
     imageData,
     destination: {
       x: 99,

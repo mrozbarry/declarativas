@@ -5,7 +5,7 @@ import { Canvas } from '../../../../support/canvas'
 test('clearRect exec runs clearRect context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  clearRect.exec(context, {
+  clearRect.exec({ context }, {
     x: 0,
     y: 0,
     width: 100,
@@ -19,7 +19,7 @@ test('clearRect exec runs clearRect context', (t) => {
 test('fillRect exec runs fillRect context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  fillRect.exec(context, {
+  fillRect.exec({ context }, {
     x: 0,
     y: 0,
     width: 100,
@@ -33,7 +33,7 @@ test('fillRect exec runs fillRect context', (t) => {
 test('strokeRect exec runs strokeRect context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  strokeRect.exec(context, {
+  strokeRect.exec({ context }, {
     x: 0,
     y: 0,
     width: 100,

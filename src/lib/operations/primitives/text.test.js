@@ -5,7 +5,7 @@ import { Canvas } from '../../../../support/canvas';
 test('fillText exec calls fillText context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  fillText.exec(context, {
+  fillText.exec({ context }, {
     text: 'foo',
     x: 100,
     y: 200,
@@ -24,7 +24,7 @@ test('fillText exec calls fillText context', (t) => {
 test('strokeText exec calls strokeText context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  strokeText.exec(context, {
+  strokeText.exec({ context }, {
     text: 'foo',
     x: 100,
     y: 200,

@@ -2,7 +2,7 @@ import * as operation from '../operation';
 
 export const translate = operation.make(
   'translate',
-  (context, props) => context.translate(
+  ({ context }, props) => context.translate(
     props.x,
     props.y,
   ),
@@ -10,12 +10,12 @@ export const translate = operation.make(
 
 export const rotate = operation.make(
   'rotate',
-  (context, props) => context.rotate(props.value),
+  ({ context }, props) => context.rotate(props.value),
 );
 
 export const scale = operation.make(
   'scale',
-  (context, props) => context.scale(
+  ({ context }, props) => context.scale(
     props.x,
     props.y,
   ),
@@ -23,7 +23,7 @@ export const scale = operation.make(
 
 export const setTransform = operation.make(
   'setTransform',
-  (context, props) => props.matrix
+  ({ context }, props) => props.matrix
     ? context.setTransform(props.matrix)
     : context.setTransform(
       props.a,
@@ -37,7 +37,7 @@ export const setTransform = operation.make(
 
 export const transform = operation.make(
   'transform',
-  (context, props) => context.transform(
+  ({ context }, props) => context.transform(
     props.a,
     props.b,
     props.c,

@@ -11,7 +11,7 @@ import { Canvas } from '../../../../support/canvas';
 test('transform exec calls transform context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  translate.exec(context, {
+  translate.exec({ context }, {
     x: 100,
     y: 200,
   });
@@ -26,7 +26,7 @@ test('transform exec calls transform context', (t) => {
 test('rotate exec calls rotate context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  rotate.exec(context, {
+  rotate.exec({ context }, {
     value: 100,
   });
 
@@ -39,7 +39,7 @@ test('rotate exec calls rotate context', (t) => {
 test('scale exec calls scale context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  scale.exec(context, {
+  scale.exec({ context }, {
     x: 300,
     y: 400,
   });
@@ -54,7 +54,7 @@ test('scale exec calls scale context', (t) => {
 test('setTransform exec calls setTransform context with matrix values', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  setTransform.exec(context, {
+  setTransform.exec({ context }, {
     a: 1,
     b: 2,
     c: 3,
@@ -78,7 +78,7 @@ test('setTransform exec calls setTransform context with a matrix', (t) => {
   const context = (new Canvas()).getContext('2d');
   const matrix = {};
 
-  setTransform.exec(context, {
+  setTransform.exec({ context }, {
     matrix,
   });
 
@@ -89,7 +89,7 @@ test('setTransform exec calls setTransform context with a matrix', (t) => {
 test('transform exec calls transform context with matrix values', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  transform.exec(context, {
+  transform.exec({ context }, {
     a: 1,
     b: 2,
     c: 3,

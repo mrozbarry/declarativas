@@ -6,7 +6,7 @@ const numberOr = (value, fallback) => (
 
 export const drawImage = operation.make(
   'drawImage',
-  (context, props) => props.source
+  ({ context }, props) => props.source
     ? context.drawImage(
       props.image,
       props.source.x,
@@ -29,7 +29,7 @@ export const drawImage = operation.make(
 
 export const putImageData = operation.make(
   'putImageData',
-  (context, props) => props.source
+  ({ context }, props) => props.source
     ? context.putImageData(
       props.imageData,
       props.destination.x,

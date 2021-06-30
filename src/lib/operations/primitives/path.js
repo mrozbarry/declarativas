@@ -4,22 +4,22 @@ const TWO_PI = Math.PI * 2;
 
 export const beginPath = operation.make(
   'beginPath',
-  (context) => context.beginPath(),
+  ({ context }) => context.beginPath(),
 );
 
 export const moveTo = operation.make(
   'moveTo',
-  (context, props) => context.moveTo(props.x, props.y),
+  ({ context }, props) => context.moveTo(props.x, props.y),
 );
 
 export const lineTo = operation.make(
   'lineTo',
-  (context, props) => context.lineTo(props.x, props.y),
+  ({ context }, props) => context.lineTo(props.x, props.y),
 );
 
 export const arc = operation.make(
   'arc',
-  (context, props) => context.arc(
+  ({ context }, props) => context.arc(
     props.x,
     props.y,
     props.radius,
@@ -31,7 +31,7 @@ export const arc = operation.make(
 
 export const arcTo = operation.make(
   'arcTo',
-  (context, props) => context.arcTo(
+  ({ context }, props) => context.arcTo(
     props.controlPointA.x,
     props.controlPointA.y,
     props.controlPointB.x,
@@ -42,7 +42,7 @@ export const arcTo = operation.make(
 
 export const ellipse = operation.make(
   'ellipse',
-  (context, props) => context.ellipse(
+  ({ context }, props) => context.ellipse(
     props.x,
     props.y,
     props.radius.x,
@@ -56,7 +56,7 @@ export const ellipse = operation.make(
 
 export const bezierCurveTo = operation.make(
   'bezierCurveTo',
-  (context, props) => context.bezierCurveTo(
+  ({ context }, props) => context.bezierCurveTo(
     props.controlPointA.x,
     props.controlPointA.y,
     props.controlPointB.x,
@@ -68,7 +68,7 @@ export const bezierCurveTo = operation.make(
 
 export const quadraticCurveTo = operation.make(
   'quadraticCurveTo',
-  (context, props) => context.quadraticCurveTo(
+  ({ context }, props) => context.quadraticCurveTo(
     props.controlPoint.x,
     props.controlPoint.y,
     props.x,
@@ -78,7 +78,7 @@ export const quadraticCurveTo = operation.make(
 
 export const rect = operation.make(
   'rect',
-  (context, props) => context.rect(
+  ({ context }, props) => context.rect(
     props.x,
     props.y,
     props.width,
@@ -88,27 +88,27 @@ export const rect = operation.make(
 
 export const drawFocusIfNeeded = operation.make(
   'drawFocusIfNeeded',
-  (context, props) => props.path
+  ({ context }, props) => props.path
     ? context.drawFocusIfNeeded(props.path, props.element)
     : context.drawFocusIfNeeded(props.element)
 );
 
 export const closePath = operation.make(
   'closePath',
-  (context) => context.closePath(),
+  ({ context }) => context.closePath(),
 );
 
 export const clip = operation.make(
   'clip',
-  (context) => context.clip(),
+  ({ context }) => context.clip(),
 );
 
 export const stroke = operation.make(
   'stroke',
-  (context) => context.stroke(),
+  ({ context }) => context.stroke(),
 );
 
 export const fill = operation.make(
   'fill',
-  (context) => context.fill(),
+  ({ context }) => context.fill(),
 );

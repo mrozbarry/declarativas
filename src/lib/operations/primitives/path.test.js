@@ -20,7 +20,7 @@ import { Canvas } from '../../../../support/canvas';
 test('beginPath exec calls beginPath context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  beginPath.exec(context);
+  beginPath.exec({ context });
 
   t.is(context.beginPath.callCount, 1);
 });
@@ -28,7 +28,7 @@ test('beginPath exec calls beginPath context', (t) => {
 test('moveTo exec calls moveTo context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  moveTo.exec(context, {
+  moveTo.exec({ context }, {
     x: 100,
     y: 200
   });
@@ -40,7 +40,7 @@ test('moveTo exec calls moveTo context', (t) => {
 test('lineTo exec calls lineTo context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  lineTo.exec(context, {
+  lineTo.exec({ context }, {
     x: 100,
     y: 200
   });
@@ -52,7 +52,7 @@ test('lineTo exec calls lineTo context', (t) => {
 test('arc exec calls arc context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  arc.exec(context, {
+  arc.exec({ context }, {
     x: 100,
     y: 200,
     radius: 500,
@@ -67,7 +67,7 @@ test('arc exec calls arc context', (t) => {
 test('arc defaults endAngle to TWO_PI', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  arc.exec(context, {
+  arc.exec({ context }, {
     x: 100,
     y: 200,
     radius: 500,
@@ -81,7 +81,7 @@ test('arc defaults endAngle to TWO_PI', (t) => {
 test('arcTo exec calls arcTo context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  arcTo.exec(context, {
+  arcTo.exec({ context }, {
     controlPointA: {
       x: 100,
       y: 200
@@ -106,7 +106,7 @@ test('arcTo exec calls arcTo context', (t) => {
 test('ellipse exec calls ellipse context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  ellipse.exec(context, {
+  ellipse.exec({ context }, {
     x: 100,
     y: 200,
     radius: { x: 500, y: 501 },
@@ -122,7 +122,7 @@ test('ellipse exec calls ellipse context', (t) => {
 test('ellipse defaults rotation to 0, and endAngle to TWO_PI', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  ellipse.exec(context, {
+  ellipse.exec({ context }, {
     x: 100,
     y: 200,
     radius: { x: 500, y: 501 },
@@ -136,7 +136,7 @@ test('ellipse defaults rotation to 0, and endAngle to TWO_PI', (t) => {
 test('bezierCurveTo exec calls bezierCurveTo context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  bezierCurveTo.exec(context, {
+  bezierCurveTo.exec({ context }, {
     controlPointA: {
       x: 100,
       y: 200
@@ -163,7 +163,7 @@ test('bezierCurveTo exec calls bezierCurveTo context', (t) => {
 test('quadraticCurveTo exec calls quadraticCurveTo context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  quadraticCurveTo.exec(context, {
+  quadraticCurveTo.exec({ context }, {
     controlPoint: {
       x: 100,
       y: 200
@@ -184,7 +184,7 @@ test('quadraticCurveTo exec calls quadraticCurveTo context', (t) => {
 test('rect exec calls rect context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  rect.exec(context, {
+  rect.exec({ context }, {
     x: 1,
     y: 2,
     width: 3,
@@ -205,7 +205,7 @@ test('drawFocusIfNeeded exec calls drawFocusIfNeeded context', (t) => {
   const path = {};
   const element = {};
 
-  drawFocusIfNeeded.exec(context, {
+  drawFocusIfNeeded.exec({ context }, {
     path,
     element,
   });
@@ -221,7 +221,7 @@ test('drawFocusIfNeeded exec calls drawFocusIfNeeded context without path', (t) 
   const context = (new Canvas()).getContext('2d');
   const element = {};
 
-  drawFocusIfNeeded.exec(context, {
+  drawFocusIfNeeded.exec({ context }, {
     element,
   });
 
@@ -234,7 +234,7 @@ test('drawFocusIfNeeded exec calls drawFocusIfNeeded context without path', (t) 
 test('closePath exec calls closePath context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  closePath.exec(context);
+  closePath.exec({ context });
 
   t.is(context.closePath.callCount, 1);
 });
@@ -242,7 +242,7 @@ test('closePath exec calls closePath context', (t) => {
 test('clip exec calls clip context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  clip.exec(context);
+  clip.exec({ context });
 
   t.is(context.clip.callCount, 1);
 });
@@ -250,7 +250,7 @@ test('clip exec calls clip context', (t) => {
 test('stroke exec calls stroke context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  stroke.exec(context);
+  stroke.exec({ context });
 
   t.is(context.stroke.callCount, 1);
 });
@@ -258,7 +258,7 @@ test('stroke exec calls stroke context', (t) => {
 test('fill exec calls fill context', (t) => {
   const context = (new Canvas()).getContext('2d');
 
-  fill.exec(context);
+  fill.exec({ context });
 
   t.is(context.fill.callCount, 1);
 });

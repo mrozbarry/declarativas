@@ -6,7 +6,7 @@ test('setLineDash primitive calls setLineDash context', (t) => {
   const context = (new Canvas()).getContext('2d');
   const segments = [3, 3, 3, 3, 20, 3, 3, 3, 3];
 
-  setLineDash.exec(context, {
+  setLineDash.exec({ context }, {
     segments,
   });
 
