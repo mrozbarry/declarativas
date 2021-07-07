@@ -103,8 +103,10 @@ export const clip = operation.make(
   ({ context }, props = {}) => {
     if ('path' in props) {
       context.clip(props.path, props.rule);
-    } else {
+    } else if ('rule' in props) {
       context.clip(props.rule);
+    } else {
+      context.clip();
     }
   }
 );
@@ -114,8 +116,10 @@ export const stroke = operation.make(
   ({ context }, props = {}) => {
     if ('path' in props) {
       context.stroke(props.path, props.rule);
-    } else {
+    } else if ('rule' in props) {
       context.stroke(props.rule);
+    } else {
+      context.stroke();
     }
   },
 );
@@ -125,8 +129,10 @@ export const fill = operation.make(
   ({ context }, props = {}) => {
     if ('path' in props) {
       context.fill(props.path, props.rule);
-    } else {
+    } else if ('rule' in props) {
       context.fill(props.rule);
+    } else {
+      context.fill();
     }
   },
 );
