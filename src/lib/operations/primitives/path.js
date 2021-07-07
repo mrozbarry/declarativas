@@ -101,9 +101,9 @@ export const closePath = operation.make(
 export const clip = operation.make(
   'clip',
   ({ context }, props = {}) => {
-    if ('path' in props) {
+    if (props && 'path' in props) {
       context.clip(props.path, props.rule);
-    } else if ('rule' in props) {
+    } else if (props && 'rule' in props) {
       context.clip(props.rule);
     } else {
       context.clip();
@@ -114,9 +114,9 @@ export const clip = operation.make(
 export const stroke = operation.make(
   'stroke',
   ({ context }, props = {}) => {
-    if ('path' in props) {
+    if (props && 'path' in props) {
       context.stroke(props.path, props.rule);
-    } else if ('rule' in props) {
+    } else if (props && 'rule' in props) {
       context.stroke(props.rule);
     } else {
       context.stroke();
@@ -127,9 +127,9 @@ export const stroke = operation.make(
 export const fill = operation.make(
   'fill',
   ({ context }, props = {}) => {
-    if ('path' in props) {
+    if (props && 'path' in props) {
       context.fill(props.path, props.rule);
-    } else if ('rule' in props) {
+    } else if (props && 'rule' in props) {
       context.fill(props.rule);
     } else {
       context.fill();
