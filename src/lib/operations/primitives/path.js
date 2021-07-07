@@ -100,15 +100,33 @@ export const closePath = operation.make(
 
 export const clip = operation.make(
   'clip',
-  ({ context }) => context.clip(),
+  ({ context }, props = {}) => {
+    if ('path' in props) {
+      context.clip(props.path, props.rule);
+    } else {
+      context.clip(props.rule);
+    }
+  }
 );
 
 export const stroke = operation.make(
   'stroke',
-  ({ context }) => context.stroke(),
+  ({ context }, props = {}) => {
+    if ('path' in props) {
+      context.stroke(props.path, props.rule);
+    } else {
+      context.stroke(props.rule);
+    }
+  },
 );
 
 export const fill = operation.make(
   'fill',
-  ({ context }) => context.fill(),
+  ({ context }, props = {}) => {
+    if ('path' in props) {
+      context.fill(props.path, props.rule);
+    } else {
+      context.fill(props.rule);
+    }
+  },
 );

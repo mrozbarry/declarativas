@@ -1,4 +1,5 @@
 import test from 'ava';
+import * as sinon from 'sinon';
 import {
   beginPath,
   moveTo,
@@ -245,6 +246,14 @@ test('clip exec calls clip context', (t) => {
   clip.exec({ context });
 
   t.is(context.clip.callCount, 1);
+
+  const path = {};
+
+  clip.exec({ context }, { path, rule: 1 });
+  t.truthy(context.clip.calledWithExactly(path, 1));
+
+  clip.exec({ context }, { rule: 1 });
+  t.truthy(context.clip.calledWithExactly(1));
 });
 
 test('stroke exec calls stroke context', (t) => {
@@ -253,6 +262,14 @@ test('stroke exec calls stroke context', (t) => {
   stroke.exec({ context });
 
   t.is(context.stroke.callCount, 1);
+
+  const path = {};
+
+  stroke.exec({ context }, { path, rule: 1 });
+  t.truthy(context.stroke.calledWithExactly(path, 1));
+
+  stroke.exec({ context }, { rule: 1 });
+  t.truthy(context.stroke.calledWithExactly(1));
 });
 
 test('fill exec calls fill context', (t) => {
@@ -261,4 +278,12 @@ test('fill exec calls fill context', (t) => {
   fill.exec({ context });
 
   t.is(context.fill.callCount, 1);
+
+  const path = {};
+
+  fill.exec({ context }, { path, rule: 1 });
+  t.truthy(context.fill.calledWithExactly(path, 1));
+
+  fill.exec({ context }, { rule: 1 });
+  t.truthy(context.fill.calledWithExactly(1));
 });
