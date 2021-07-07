@@ -12,10 +12,9 @@ test('g groups a series of components', (t) => {
     fillStyle.build({ value: 'foo' }),
   ]);
 
-  t.truthy(render.calledOnceWithExactly(
-    { context, render },
-    [
-      fillStyle.build({ value: 'foo' }),
-    ]
-  ));
+  t.is(render.callCount, 1);
+  t.deepEqual(render.lastCall.args[0], context);
+  t.deepEqual(render.lastCall.args[1], [
+    fillStyle.build({ value: 'foo' }),
+  ]);
 });
