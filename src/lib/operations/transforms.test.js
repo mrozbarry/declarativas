@@ -6,7 +6,7 @@ import {
   setTransform,
   transform,
 } from './transforms';
-import { Canvas } from '../../../../support/canvas';
+import { Canvas } from '../../../support/canvas';
 
 test('transform exec calls transform context', (t) => {
   const context = (new Canvas()).getContext('2d');

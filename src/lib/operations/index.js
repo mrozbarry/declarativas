@@ -1,12 +1,11 @@
-import * as path from './primitives/path';
-import * as state from './primitives/state';
-import * as property from './primitives/property';
-import * as rect from './primitives/rect';
-import * as transforms from './primitives/transforms';
-import * as blit from './primitives/blit';
-import * as text from './primitives/text';
-import * as line from './primitives/line';
-import * as g from './primitives/g';
+import * as path from './path';
+import * as state from './state';
+import * as property from './property';
+import * as rect from './rect';
+import * as transforms from './transforms';
+import * as blit from './blit';
+import * as text from './text';
+import * as line from './line';
 
 export const primitives = {
   ...path,
@@ -17,5 +16,4 @@ export const primitives = {
   ...blit,
   ...text,
   ...line,
-  ...g,
 };

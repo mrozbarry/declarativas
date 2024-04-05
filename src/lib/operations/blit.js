@@ -1,4 +1,4 @@
-import * as operation from '../operation';
+import * as operation from './operation';
 
 const numberOr = (value, fallback) => (
   typeof value === 'number' ? value : fallback

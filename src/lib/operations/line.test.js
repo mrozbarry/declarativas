@@ -1,6 +1,6 @@
 import test from 'ava';
 import { setLineDash } from './line';
-import { Canvas } from '../../../../support/canvas';
+import { Canvas } from '../../../support/canvas';
 
 test('setLineDash primitive calls setLineDash context', (t) => {
   const context = (new Canvas()).getContext('2d');

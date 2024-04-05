@@ -1,5 +1,4 @@
 import test from 'ava';
-import * as sinon from 'sinon';
 import { render } from './render';
 import { c } from './c';
 import { Canvas } from '../../support/canvas';

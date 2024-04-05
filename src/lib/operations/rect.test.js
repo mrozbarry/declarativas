@@ -1,6 +1,6 @@
 import test from 'ava';
 import { clearRect, fillRect, strokeRect } from './rect';
-import { Canvas } from '../../../../support/canvas'
+import { Canvas } from '../../../support/canvas';
 
 test('clearRect exec runs clearRect context', (t) => {
   const context = (new Canvas()).getContext('2d');

@@ -1,6 +1,6 @@
 import test from 'ava';
 import { save, restore } from './state';
-import { Canvas } from '../../../../support/canvas';
+import { Canvas } from '../../../support/canvas';
 
 test('save exec calls save context', (t) => {
   const context = (new Canvas()).getContext('2d');

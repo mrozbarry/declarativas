@@ -1,4 +1,4 @@
-import * as operation from '../operation';
+import * as operation from './operation';
 
 const TWO_PI = Math.PI * 2;
 

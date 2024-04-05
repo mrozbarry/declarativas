@@ -1,4 +1,4 @@
-import * as operation from '../operation';
+import * as operation from './operation';
 
 export const save = operation.make(
   'save',

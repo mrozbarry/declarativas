@@ -1,6 +1,6 @@
 import test from 'ava';
 import { fillText, strokeText } from './text';
-import { Canvas } from '../../../../support/canvas';
+import { Canvas } from '../../../support/canvas';
 
 test('fillText exec calls fillText context', (t) => {
   const context = (new Canvas()).getContext('2d');

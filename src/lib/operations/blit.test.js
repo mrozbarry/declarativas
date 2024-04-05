@@ -1,6 +1,6 @@
 import test from 'ava';
 import { drawImage, putImageData } from './blit';
-import { Canvas } from '../../../../support/canvas';
+import { Canvas } from '../../../support/canvas';
 
 test('primitive drawImage calls context drawImage with full image width and height when not specifying a source or size', (t) => {
   const context = (new Canvas()).getContext('2d');

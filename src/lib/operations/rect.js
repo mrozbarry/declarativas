@@ -1,4 +1,4 @@
-import * as operation from '../operation';
+import * as operation from './operation';
 
 const rectOperation = (name) => {
   return operation.make(

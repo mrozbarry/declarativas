@@ -16,7 +16,6 @@ test('all standardized context 2d properties and methods are available', (t) => 
     'fillRect',
     'fillStyle',
     'font',
-    'g', // non-standard svg <g> equivalent
     'globalAlpha',
     'globalCompositeOperation',
     'imageSmoothingEnabled',

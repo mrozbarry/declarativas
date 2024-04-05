@@ -1,5 +1,4 @@
 import test from 'ava';
-import * as sinon from 'sinon';
 import {
   beginPath,
   moveTo,
@@ -16,7 +15,7 @@ import {
   stroke,
   fill,
 } from './path';
-import { Canvas } from '../../../../support/canvas';
+import { Canvas } from '../../../support/canvas';
 
 test('beginPath exec calls beginPath context', (t) => {
   const context = (new Canvas()).getContext('2d');

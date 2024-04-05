@@ -1,4 +1,4 @@
-import * as operation from '../operation.js';
+import * as operation from './operation.js';
 
 export const fillText = operation.make(
   'fillText',
