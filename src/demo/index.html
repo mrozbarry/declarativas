@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body * {
+        box-sizing: border-box;
+      }
+      canvas {
+        border: 1px black solid;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Declarativas Demos</h1>
+
+    <div style="margin-bottom: 1rem;">
+      <label>
+        <input type="checkbox" id="use-raf" checked />
+        &nbsp;Use requestAnimationFrame (unchecked is setTimeout(draw, 0))?
+      </label>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label>
+        How many squares to draw<br />
+        <input type="range" id="render-count" min="0" max="88" value="88"/>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      FPS: actual=<span id="fps-count">?</span> | calculated=<span id="fps-calculated">?</span>
+    </div>
+
+    <canvas width="800" height="600">
+      Canvas not supported
+    </canvas>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
