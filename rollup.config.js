@@ -1,5 +1,5 @@
 import { eslint } from 'rollup-plugin-eslint';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import strip from '@rollup/plugin-strip';
 import cleanup from 'rollup-plugin-cleanup';
 
