@@ -9,25 +9,26 @@ export const render = (nodes, context) => {
   }
 
   if (nodes.length === 0) {
-    return 0;
+    return;
   }
 
-  let ops = 0;
-  for (let node of nodes.flat()) {
+  for (let node of nodes) {
     if (!node) {
+      continue;
+    }
+    if (Array.isArray(node)) {
+      render(node, context);
       continue;
     }
 
     switch (node.type) {
     case 'mutator':
-      ops += 1 + render(node.fn(context), context);
+      render(node.fn(context), context);
       break;
 
     case 'element':
-      ops += render(node.fn(node.props, node.children, context), context);
+      render(node.fn(node.props, node.children, context), context);
       break;
     }
   }
-
-  return ops;
 };
