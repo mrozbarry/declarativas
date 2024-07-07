@@ -1,5 +1,34 @@
 import sinon from 'sinon';
 
+const context2dProperties = [
+  'direction',
+  'fillStyle',
+  'filter',
+  'font',
+  'fontKerning',
+  'fontStretch',
+  'fontVariantCaps',
+  'globalAlpha',
+  'globalCompositeOperation',
+  'imageSmoothingEnabled',
+  'imageSmoothingQuality',
+  'letterSpacing',
+  'lineCap',
+  'lineDashOffset',
+  'lineJoin',
+  'lineWidth',
+  'miterLimit',
+  'shadowBlur',
+  'shadowColor',
+  'shadowOffsetX',
+  'shadowOffsetY',
+  'strokeStyle',
+  'textAlign',
+  'textBaseline',
+  'textRendering',
+  'wordSpacing',
+];
+
 const context2dMethods = [
   'arc',
   'arcTo',
@@ -49,6 +78,11 @@ class CanvasContext2d {
     context2dMethods
       .forEach((name) => {
         this[name] = sinon.fake();
+      });
+
+    context2dProperties
+      .forEach((name) => {
+        this[name] = null;
       });
   }
 }
