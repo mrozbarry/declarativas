@@ -1,40 +1,33 @@
-import { primitives } from './operations/index';
-
-export const render = (context, nodes) => {
-  if (!nodes || nodes.length === 0) {
-    return;
-  }
-
+/**
+ * @param {array} nodes
+ * @param {CanvasRenderingContext2d|OffscreenCanvasRenderingContext2D} context
+ * @returns {null}
+ */
+export const render = (nodes, context) => {
   if (!Array.isArray(nodes)) {
-    return render(context, [nodes]);
+    nodes = [nodes];
   }
 
-  let node;
-  let op;
+  if (nodes.length === 0) {
+    return 0;
+  }
 
-  for (node of nodes) {
+  let ops = 0;
+  for (let node of nodes.flat()) {
     if (!node) {
       continue;
     }
 
-    if (Array.isArray(node)) {
-      render(context, node);
-      continue;
-    }
+    switch (node.type) {
+    case 'mutator':
+      ops += 1 + render(node.fn(context), context);
+      break;
 
-    try {
-      op = primitives[node.type];
-      op.exec(
-        { context, render },
-        node.props,
-        node.children,
-      );
-    } catch (exception) {
-      const error = new TypeError(
-        `Unable to render ${node.type}`
-      );
-      error.source = exception;
-      throw error;
+    case 'element':
+      ops += render(node.fn(node.props, node.children, context), context);
+      break;
     }
   }
+
+  return ops;
 };
