@@ -101,15 +101,13 @@ const draw = () => {
       square.angle += (square.speed * delta);
     });
 
-  let ops = render(
+  render(
     [
       h(ClearRect, { x: 0, y: 0, w: canvas.width, h: canvas.height }),
       squares.map(props => h(Square, props)),
     ],
     context,
   );
-
-  console.log('ops', ops);
 
   schedule(draw);
 };
