@@ -14,8 +14,9 @@
     "test": "ava",
     "test:coverage": "c8 --100 ava",
     "build": "rollup -c ./rollup.config.js",
+    "build:demo": "npm run build && cp declarativas.ems.js ./src/demo/",
     "prepublishOnly": "npm run build",
-    "demo": "npm run build && cp declarativas.esm.js ./src/demo/ && npx srvs --docRoot=./src/demo --scriptRoot=./src/demo"
+    "demo": "npm run build:demo && npx srvs --docRoot=./src/demo --scriptRoot=./src/demo"
   },
   "devDependencies": {
     "@rollup/plugin-strip": "^3.0.4",
