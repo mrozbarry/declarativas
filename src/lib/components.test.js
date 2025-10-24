@@ -1,6 +1,6 @@
 import test from 'ava';
 import { Canvas } from '../../support/canvas.js';
-import { Arc, ArcTo, CurveTo, DrawImage, Ellipse, ErrorBoundry, LineTo, MoveTo, Path, Properties, Property, Stateful, Text } from './components.js';
+import { Arc, ArcTo, CurveTo, DrawImage, Ellipse, ErrorBoundary, LineTo, MoveTo, Path, Properties, Property, Stateful, Text } from './components.js';
 import { createMutator, createElement as h } from './createElement.js';
 import { render } from './render.js';
 
@@ -256,7 +256,7 @@ test('can catch errors', (t) => {
   const context = (new Canvas()).getContext('2d');
 
   render(
-    h(ErrorBoundry, {
+    h(ErrorBoundary, {
       onError: (err) => {
         return [
           h(Properties, { fillStyle: 'green' }),

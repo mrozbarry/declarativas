@@ -58,7 +58,8 @@ const state = {
 const fpsCount = document.querySelector('#fps-count');
 const fpsCalculated = document.querySelector('#fps-calculated');
 const useRaf = document.querySelector('input[type="checkbox"]');
-const renderCount = document.querySelector('input[type="range"]');
+const renderCount = document.querySelector('input[type="range"]#render-count');
+const renderAlpha = document.querySelector('input[type="range"]#render-alpha');
 
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
@@ -104,7 +105,11 @@ const draw = () => {
   render(
     [
       h(ClearRect, { x: 0, y: 0, w: canvas.width, h: canvas.height }),
-      squares.map(props => h(Square, props)),
+      h(Stateful, {}, [
+        h(Properties, { globalAlpha: renderAlpha.value }),
+        squares.map(props => h(Square, props)),
+
+      ])
     ],
     context,
   );
